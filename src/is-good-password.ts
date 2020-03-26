@@ -28,6 +28,20 @@ const isGoodPassword = (
   let cnt_specials = 0
 
   for (let i = 0; i < p.length; i++) {
+    if (/[A-Z]/.test(p[i])) {
+      cnt_upper++
+      results.has_upper = cnt_upper > 0
+    } else if (/[a-z]/.test(p[i])) {
+      cnt_lower++
+      results.has_lower = cnt_lower > 0
+    } else if (/[0-9]/.test(p[i])) {
+      cnt_number++
+      results.has_number = cnt_number > 0
+    } else if (/[!|@|#|$|%|^|&|*|(|)|-|_]/.test(p[i])) {
+      cnt_specials++
+      results.has_special = cnt_specials > 0
+    }
+
     if (
       results.has_upper &&
       results.has_lower &&
@@ -37,16 +51,6 @@ const isGoodPassword = (
       // Already satisfies everything
       // so no reason to continue
       return results
-    }
-
-    if (/[A-Z]/.test(p[i])) {
-      cnt_upper > 0 ? (results.has_upper = true) : cnt_upper++
-    } else if (/[a-z]/.test(p[i])) {
-      cnt_lower > 0 ? (results.has_lower = true) : cnt_lower++
-    } else if (/[0-9]/.test(p[i])) {
-      cnt_number > 0 ? (results.has_number = true) : cnt_number++
-    } else if (/[!|@|#|$|%|^|&|*|(|)|-|_]/.test(p[i])) {
-      cnt_specials > 0 ? (results.has_special = true) : cnt_specials++
     }
   }
 
