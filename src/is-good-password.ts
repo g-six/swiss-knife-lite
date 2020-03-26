@@ -31,13 +31,16 @@ const isGoodPassword = (
     if (/[A-Z]/.test(p[i])) {
       cnt_upper++
       results.has_upper = cnt_upper > 0
-    } else if (/[a-z]/.test(p[i])) {
+    }
+    if (/[a-z]/.test(p[i])) {
       cnt_lower++
       results.has_lower = cnt_lower > 0
-    } else if (/[0-9]/.test(p[i])) {
+    }
+    if (/[0-9]/.test(p[i])) {
       cnt_number++
       results.has_number = cnt_number > 0
-    } else if (/[!|@|#|$|%|^|&|*|(|)|-|_]/.test(p[i])) {
+    }
+    if (/[!|@|#|$|%|^|&|*|(|)|-|\+|_]/.test(p[i])) {
       cnt_specials++
       results.has_special = cnt_specials > 0
     }

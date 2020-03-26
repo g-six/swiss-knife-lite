@@ -3,7 +3,7 @@ import { isGoodPassword } from './'
 describe('Test isGoodPassword', () => {
   it('should pass if has at least one upper case, lower case, number and symbol', () => {
     const { has_lower, has_number, has_special, has_upper } = isGoodPassword(
-      'tH1$',
+      'tH1+',
       4,
     )
     expect(has_lower).toBeTruthy()
@@ -25,6 +25,11 @@ describe('Test isGoodPassword', () => {
   it('should fail if password does not have any numbers', () => {
     const { has_number } = isGoodPassword('+Hi$ShouldF@!|', 8)
     expect(has_number).toBeFalsy()
+  })
+
+  it('should set has_special if special characters found', () => {
+    const { has_special } = isGoodPassword('', 0)
+    expect(has_special).toBeFalsy()
   })
 
   it('should fail if not long enough', () => {
