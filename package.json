@@ -1,6 +1,6 @@
 {
   "name": "@g-six/swiss-knife-lite",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Yeah, like the Swiss knife. Just basics",
   "main": "lib/index.js",
   "typings": "lib/index",
